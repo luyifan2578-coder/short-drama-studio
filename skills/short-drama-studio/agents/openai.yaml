@@ -1,0 +1,4 @@
+interface:
+  display_name: "Short Drama Studio"
+  short_description: "短剧拆镜、分镜提示词与电影感故事板"
+  default_prompt: "用 $short-drama-studio 把这段剧本做成短剧分镜：先定时长与边界，再逐镜写出可整段复制的镜头提示词。"

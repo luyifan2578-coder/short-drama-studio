@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archives
+*.zip
+*.7z
+*.tar.gz
+
+# Editors
+.vscode/
+.idea/
