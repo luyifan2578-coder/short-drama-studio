@@ -2,7 +2,7 @@
 name: short-drama-studio
 description: 用一套统一规则完成 AI 短剧的拆集拆镜、逐镜情绪设计、30 秒视频分镜提示词与电影感静帧故事板。用于分镜拆分、镜头设计、Seedance 视频提示词、剧集时长与边界规划、逐镜情绪与连续性检查、21:9 电影感单帧／三联／九镜等短剧视觉生产任务。
 metadata:
-  version: 3
+  version: 4
   short-description: 短剧拆镜与提示词一体化生产
 ---
 
@@ -18,7 +18,7 @@ metadata:
 4. 项目《分镜规范》。项目已把本 skill 的通用规则本地化为具体值时，以项目规范为执行依据。
 5. 本 skill 的默认规则，见 [references/production-rules.md](references/production-rules.md)。
 
-## 六条不可违背的生产纪律
+## 七条不可违背的生产纪律
 
 - **对白与旁白一律取自原文本，不删减、不改写、不合并、不省略。** 本地化项目按目标语言输出朗读文本，画面指令保持中文。旁白与对白分轨：旁白或内心 VO 播放期间，画面内所有人物闭口、无口型、无说话嘴形。
 - **每个生成单元结尾必须有作为时间轴实际镜头的技术尾帧**，写明人物位置、姿态、朝向、距离、道具与光源状态，可被下一单元首帧直接继承。
@@ -26,6 +26,7 @@ metadata:
 - **每集走完四步门禁才动手。** 先做方案分析讨论，再在对话界面弹出方案选项交互卡让用户点选或自行输入要求，确认之后才拆分镜、出提示词。只在正文里列 A／B 选项不算过闸；当前模式发不出交互卡时，停下说明并请用户切换模式。
 - **连续场先建状态账本。** 区分实际在场人物与本段主动人物，锁定固定空间、关系轴、人物禁区、道具持有和动作进程；没有明确离场的人不得因本段无台词而消失。复杂连续任务读 [references/continuity-ledger.md](references/continuity-ledger.md)。
 - **时空与声源必须分层。** 真实现场、显示载体、档案影像、纯音频、VO 与后期文字分别标记；档案人物和道具不得串入现实现场，文本交付不得冒充成片验证。
+- **资产引用与生成证据逐次核对。** 写提示词前读取当前资产目录，按项目约定决定图片后缀口径；检查整段提示词正文，而不只检查资产表或编号镜头。连续单元的书面尾帧只支持起草，生成接续须核对上一单元的实际成片尾态。详见 [references/validation-and-evidence.md](references/validation-and-evidence.md)。
 
 ## 选择模式
 
@@ -68,16 +69,16 @@ metadata:
 1. 读原文，取到准确的段落范围与行号，并锁定本次制作起点、终点和不得提前生成的外部边界。DOCX 用 `scripts/extract_docx.py` 导出带段落号与样式的 UTF-8 文本。
 2. 做时长预算：中文约 4.5 字/秒、英文约 2.7 词/秒（情绪对白 2.4—2.6），叠加句间停顿与尾帧，算出每段能装多少字。详见 [references/splitting.md](references/splitting.md)。
 3. 定边界：优先落在场景转换点与事件完成处，不切在同一句对白或同一连续动作中间；按连续场次建立依赖链，不把相邻集自动视为独立任务。
-4. 建账本：记录实际在场人物、固定锚点、关系轴、道具生命周期和上一尾帧；含屏幕、录像、录音或 VO 时标记 `REAL/DISPLAY/ARCHIVE/AUDIO/VO/POST` 层。
+4. 建账本：记录实际在场人物、固定锚点、关系轴、道具身份与状态、上一尾帧；含屏幕、录像、录音或 VO 时标记 `REAL/DISPLAY/ARCHIVE/AUDIO/VO/POST` 层。开工时递归读取当前资产目录；缺失资产和历史名称不得当成正式引用。
 5. 定情绪：先确定这一段的情绪基调，再逐镜写清每位出镜人物的情绪、具体视线目标与微表演。禁止把暧昧戏演成悬疑、把看戏演成恐惧。
 6. 写镜头：一镜一个信息任务，九项字段齐全，单一单元内不越轴；相邻镜头景别不同，同一动作不跨镜重复，长台词切到对方反应镜。
-7. 按 [references/video-prompt.md](references/video-prompt.md) 的自检清单与 production-rules 第四节回看清单过一遍，并按证据注明提示词、生成、检查和用户确认分别处于哪一状态。
+7. 按 [references/video-prompt.md](references/video-prompt.md) 的自检清单与 [references/validation-and-evidence.md](references/validation-and-evidence.md) 核对全文资产名、原文、时长、连续状态和证据等级；分别注明提示词、生成、画面检查和用户确认的状态。
 
 ## 输出约定
 
 - 提示词默认直接在对话里给出可整段复制的纯文本，不额外写入文件；用户明确要求落盘时才写文件。
 - 每个生成单元必须自包含：场景、时间天气、人物状态、起始位置、朝向、距离、光源、镜头清单、尾帧锁定全部重述，不依赖模型记住上一段。
-- 提示词里只写资产名称（场景、人物、服装、道具）；人物外观、服装样式与场景布局一律写「以随附资产图为准」，不重复描述，避免模型自行编造空间与外观。
+- 正式资产引用使用当前磁盘文件名，图片后缀保留或省略按项目规则执行；人物外观、服装样式与场景布局一律写「以随附资产图为准」，不重复描述，避免模型自行编造空间与外观。
 - 已有定稿资产图时，剧本决定剧情事实、资产图决定视觉外观、紧邻尾帧决定当前状态；缺少定稿资产时列出缺失项，不自行想象成定稿。
 - 精确短信、法律文件、聊天记录和界面文字使用 `POST` 后期叠加；视频模型只负责可信载体、版式区域和人物反应。
 - 不给人物加眼睛发光、瞳孔异色、泛红、发烫、光晕、粒子一类特效。
@@ -92,6 +93,7 @@ metadata:
 - 时长预算、边界与交接：[references/splitting.md](references/splitting.md)
 - 连续状态账本、时空声源分层、道具生命周期与局部返修：[references/continuity-ledger.md](references/continuity-ledger.md)
 - 视频提示词字段与自查：[references/video-prompt.md](references/video-prompt.md)
+- 资产全正文审计、平台字符预算、实际尾帧与证据等级：[references/validation-and-evidence.md](references/validation-and-evidence.md)
 - 表演、情绪、轴线、运镜、转场、物理：[references/craft.md](references/craft.md)
 - 静帧／三联／九镜：[references/cinematic-stills.md](references/cinematic-stills.md)
 
