@@ -2,7 +2,7 @@
 name: short-drama-production
 description: 以漫剧制作标准化1.1的剧本接收、资产交接、网页生成和本地交付为骨架，调用 short-drama-studio 完成拆镜、声画设计与视频提示词。用于已明确范围的短剧全流程制作或指定阶段接续；技能维护、清单核对与流程讨论不启动资产或视频生成。
 metadata:
-  version: "2026.10.16.2"
+  version: "2026.10.16.3"
   short-description: 用 short-drama-studio 分镜的短剧全流程制作
 ---
 
