@@ -2,7 +2,7 @@
 name: short-drama-studio
 description: 用一套统一规则完成 AI 短剧的拆集拆镜、逐镜情绪设计、30 秒视频分镜提示词与电影感静帧故事板。用于分镜拆分、镜头设计、Seedance 视频提示词、剧集时长与边界规划、逐镜情绪与连续性检查、21:9 电影感单帧／三联／九镜等短剧视觉生产任务。
 metadata:
-  version: 4
+  version: 5
   short-description: 短剧拆镜与提示词一体化生产
 ---
 
@@ -27,6 +27,7 @@ metadata:
 - **连续场先建状态账本。** 区分实际在场人物与本段主动人物，锁定固定空间、关系轴、人物禁区、道具持有和动作进程；没有明确离场的人不得因本段无台词而消失。复杂连续任务读 [references/continuity-ledger.md](references/continuity-ledger.md)。
 - **时空与声源必须分层。** 真实现场、显示载体、档案影像、纯音频、VO 与后期文字分别标记；档案人物和道具不得串入现实现场，文本交付不得冒充成片验证。
 - **资产引用与生成证据逐次核对。** 写提示词前读取当前资产目录，按项目约定决定图片后缀口径；检查整段提示词正文，而不只检查资产表或编号镜头。连续单元的书面尾帧只支持起草，生成接续须核对上一单元的实际成片尾态。详见 [references/validation-and-evidence.md](references/validation-and-evidence.md)。
+- **按来源语义核对同期状态。** 剧本可能用括注、舞台说明、动作段落、表格字段或其他写法描述与对白同时发生的表演和环境状态；先识别当前剧本的标记方式，再逐项落实到同一剧情时刻的画面或声音，不以某一种括号形状作为通用判据。详见 [references/validation-and-evidence.md](references/validation-and-evidence.md)。
 
 ## 选择模式
 
@@ -72,7 +73,7 @@ metadata:
 4. 建账本：记录实际在场人物、固定锚点、关系轴、道具身份与状态、上一尾帧；含屏幕、录像、录音或 VO 时标记 `REAL/DISPLAY/ARCHIVE/AUDIO/VO/POST` 层。开工时递归读取当前资产目录；缺失资产和历史名称不得当成正式引用。
 5. 定情绪：先确定这一段的情绪基调，再逐镜写清每位出镜人物的情绪、具体视线目标与微表演。禁止把暧昧戏演成悬疑、把看戏演成恐惧。
 6. 写镜头：一镜一个信息任务，九项字段齐全，单一单元内不越轴；相邻镜头景别不同，同一动作不跨镜重复，长台词切到对方反应镜。
-7. 按 [references/video-prompt.md](references/video-prompt.md) 的自检清单与 [references/validation-and-evidence.md](references/validation-and-evidence.md) 核对全文资产名、原文、时长、连续状态和证据等级；分别注明提示词、生成、画面检查和用户确认的状态。
+7. 按 [references/video-prompt.md](references/video-prompt.md) 的自检清单与 [references/validation-and-evidence.md](references/validation-and-evidence.md) 核对全文资产名、原文及时发生的画面／声音状态、时长、连续状态和证据等级；分别注明提示词、生成、画面检查和用户确认的状态。
 
 ## 输出约定
 

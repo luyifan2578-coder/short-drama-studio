@@ -1,0 +1,4 @@
+interface:
+  display_name: "短剧全流程制作｜分镜工作室版"
+  short_description: "剧本与资产交接、工作室分镜、网页生成及本地成片"
+  default_prompt: "使用 $short-drama-production，按本项目规则和本次授权完成指定范围；用 short-drama-studio 创作分镜，再核对真实素材、生成结果和本地交付。"
