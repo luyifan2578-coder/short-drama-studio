@@ -139,7 +139,7 @@ description: 将人物、空间、产品、建筑、历史、神话、科幻、�
 - 光线方向。
 - 人物状态。
 
-九镜模式的完整节拍、变化矩阵与提示词模板见 [references/nine-shot-story-protocol-v3.md](references/nine-shot-story-protocol-v3.md)。执行九镜任务时必须读取该文件。
+九镜模式的完整节拍、变化矩阵与提示词模板见 [references/nine-shot-story-protocol-v3.md](nine-shot-story-protocol-v3.md)。执行九镜任务时必须读取该文件。
 
 ## 6. 提示词编译
 
@@ -317,9 +317,9 @@ description: 将人物、空间、产品、建筑、历史、神话、科幻、�
 
 ## 12. 按需读取
 
-- 九镜故事任务：必须读取 [references/nine-shot-story-protocol-v3.md](references/nine-shot-story-protocol-v3.md)。
-- 输出仍显得油腻、过度精致、过脏或镜头节奏常规时：读取 [references/cinema-dna-v4-anti-ai.md](references/cinema-dna-v4-anti-ai.md)。
-- 需要更完整的单帧、三联、焦段、光学和题材方法库时：按相关章节读取 [references/cinema-dna-full-spec.md](references/cinema-dna-full-spec.md)，不要整份加载。
+- 九镜故事任务：必须读取 [references/nine-shot-story-protocol-v3.md](nine-shot-story-protocol-v3.md)。
+- 输出仍显得油腻、过度精致、过脏或镜头节奏常规时：读取 [references/cinema-dna-v4-anti-ai.md](cinema-dna-v4-anti-ai.md)。
+- 需要更完整的单帧、三联、焦段、光学和题材方法库时：按相关章节读取 [references/cinema-dna-full-spec.md](cinema-dna-full-spec.md)，不要整份加载。
 
 ## 13. 最终原则
 
